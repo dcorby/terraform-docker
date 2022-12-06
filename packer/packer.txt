@@ -1,0 +1,10 @@
+# install
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+sudo apt-get update && sudo apt-get install packer
+
+# convert json
+packer hcl2_upgrade config.json
+
+# build
+packer build config.json.pkr.hcl

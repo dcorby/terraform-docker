@@ -1,0 +1,25 @@
+{
+  "variables": {},
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "us-east-2",
+      "source_ami": "ami-0fb653ca2d3203ac1",
+      "instance_type": "t2.micro",
+      "ami_name": "<my-ami>",
+      "ami_description": "Docker AMI",
+      "ssh_username": "ubuntu"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "setup.sh",
+      "destination": "/tmp/setup.sh"
+    },
+    {
+      "type": "shell",
+      "scripts": ["setup.sh"]
+    }
+  ]
+}
